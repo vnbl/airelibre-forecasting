@@ -59,3 +59,12 @@ Air quality forecast modeling for the AireLibre system
 
 --------
 
+## Training
+### Getting raw data for training
+Run the code located at `notebooks/1.0-fcg-initial-data-exploration.ipynb`. It is recommended that for training you retrieve at least one year of data.
+Data will be stored at `data/raw/airelibre_data.csv`
+Config parameters:
+* start_date
+* end_date
+
+
