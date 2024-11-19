@@ -29,14 +29,14 @@ clean:
 ## Lint using flake8 and black (use `make format` to do formatting)
 .PHONY: lint
 lint:
-	flake8 airelibre-forecasting
-	isort --check --diff --profile black airelibre-forecasting
-	black --check --config pyproject.toml airelibre-forecasting
+	flake8 airelibre_forecasting
+	isort --check --diff --profile black airelibre_forecasting
+	black --check --config pyproject.toml airelibre_forecasting
 
 ## Format source code with black
 .PHONY: format
 format:
-	black --config pyproject.toml airelibre-forecasting
+	black --config pyproject.toml airelibre_forecasting
 
 
 
@@ -54,11 +54,16 @@ create_environment:
 # PROJECT RULES                                                                 #
 #################################################################################
 
+## Fetch Raw Data
+.PHONY: raw_data
+raw_data: requirements
+	$(PYTHON_INTERPRETER) data/make_dataset.py --start_date $(START_DATE) --end_date $(END_DATE)
+
 
 ## Make Dataset
 .PHONY: data
 data: requirements
-	$(PYTHON_INTERPRETER) airelibre-forecasting/dataset.py
+	$(PYTHON_INTERPRETER) airelibre_forecasting/dataset.py
 
 
 #################################################################################
